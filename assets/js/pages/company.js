@@ -138,17 +138,17 @@ function pagePartners(){
 
 /* ---------- Careers ---------- */
 const ROLES = [
-  {t:'Senior Intelligence Analyst',team:'Intelligence and Data',loc:'[Location]',type:'Full time',
+  {t:'Senior Intelligence Analyst',team:'Intelligence and Data',loc:'',type:'Full time',
    d:'Own diagnostic engagements end to end: data readiness assessment, internal and external analysis, opportunity scoring and executive readout.'},
-  {t:'Data Engineer, MORA Prism',team:'Product and Technology',loc:'[Location]',type:'Full time',
+  {t:'Data Engineer, MORA Prism',team:'Product and Technology',loc:'',type:'Full time',
    d:'Build the connectors, models and quality controls that bring customer-approved data and licensed external sources into the workspace.'},
-  {t:'Process Excellence Consultant',team:'MORA Advance',loc:'[Location]',type:'Full time',
+  {t:'Process Excellence Consultant',team:'MORA Advance',loc:'',type:'Full time',
    d:'Map current-state processes, expose control weaknesses and design future-state flows with named owners and measurable service levels.'},
-  {t:'Supplier Development Manager',team:'International and Marketplace',loc:'[Location]',type:'Full time',
+  {t:'Supplier Development Manager',team:'International and Marketplace',loc:'',type:'Full time',
    d:'Qualify manufacturers for Masdar Trade, run export-readiness programmes and manage the supplier cohort through onboarding.'},
-  {t:'Product Designer',team:'Product and Technology',loc:'[Location] / Remote',type:'Full time',
+  {t:'Product Designer',team:'Product and Technology',loc:'',type:'Full time',
    d:'Design decision workflows for Prism and Masdar Trade, including the evidence-labelling and verification-scope patterns.'},
-  {t:'Legal and Compliance Counsel',team:'Risk, Legal and Compliance',loc:'[Location]',type:'Part time',
+  {t:'Legal and Compliance Counsel',team:'Risk, Legal and Compliance',loc:'',type:'Part time',
    d:'Own marketplace terms, verification methodology, cross-border controls and third-party due diligence.'}
 ];
 
@@ -173,7 +173,7 @@ function pageCareers(){
       <a class="role" href="#/contact">
         <div><h3>${r.t}</h3>
           <p style="color:var(--muted);font-size:.92rem;margin:.35rem 0 0;max-width:62ch">${r.d}</p>
-          <span class="role__meta"><span>${r.team}</span><span>${r.loc.replace(/\[([^\]]+)\]/g,(m,x)=>ph(x))}</span><span>${r.type}</span></span>
+          <span class="role__meta"><span>${r.team}</span>${r.loc ? `<span>${r.loc}</span>` : ''}<span>${r.type}</span></span>
         </div>
         <span class="btn btn--sec">View role ${ARROW}</span></a>`).join('')}</div>
     <div style="margin-top:2.4rem">${note('Speculative applications','If none of these match but the work does, write to us with the problem you most want to work on and what you have built before. We read every one.',true)}</div>`)) +

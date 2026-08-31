@@ -18,10 +18,7 @@ function pageContact(){
       <h2 class="h2--tight">Send us the question.</h2>
       <p class="lede" style="margin:1.2rem 0 2rem">There is no obligation and no automatic acceptance. We will tell you plainly if we are not the right partner for what you need.</p>
       <dl class="ccard__list ccard__list--light">
-        <div><dt>Email</dt><dd>${ph('Email address')}</dd></div>
-        <div><dt>Phone</dt><dd>${ph('Phone number')}</dd></div>
-        <div><dt>Location</dt><dd>${ph('Location')}</dd></div>
-        <div><dt>Registered office</dt><dd>${ph('Registered address')}</dd></div>
+        <div><dt>Email</dt><dd>contact@mora-industries.cloud</dd></div>
       </dl>
       <div class="social social--light" role="list">
         ${SOCIAL.map(x=>`<a class="social__a" role="listitem" href="#/contact" aria-label="${x[0]}">
@@ -37,7 +34,6 @@ function pageContact(){
         </div>
         <div class="field"><label for="em">Business email</label><input id="em" name="email" type="email" required autocomplete="email" placeholder="name@company.com"></div>
         <div class="frow">
-          <div class="field"><label for="ph2">Phone <span class="opt">— optional</span></label><input id="ph2" name="phone" type="tel" autocomplete="tel" placeholder="+00 000 000 0000"><span class="hint">Include country code.</span></div>
           <div class="field"><label for="co">Organization</label><input id="co" name="org" required autocomplete="organization"></div>
         </div>
         <div class="frow">
@@ -57,7 +53,7 @@ function pageContact(){
               ${['Within 1 month','1–3 months','3–6 months','Later than 6 months','Exploring only'].map(o=>`<option>${o}</option>`).join('')}</select></div>
           <div class="field"><label for="pc">Preferred contact method</label>
             <select id="pc" name="preferred"><option value="">Select an option</option>
-              ${['Email','Telephone','Video call'].map(o=>`<option>${o}</option>`).join('')}</select></div>
+              ${['Email','Video call'].map(o=>`<option>${o}</option>`).join('')}</select></div>
         </div>
         <label class="check"><input type="checkbox" name="privacy" required>
           <span>I have read the <a href="#/legal">Privacy Notice</a> and consent to MORA processing this information to respond to my request. <strong>Required.</strong></span></label>

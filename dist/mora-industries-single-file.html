@@ -1168,8 +1168,8 @@ function renderFooter(){
       </div>
     </div>
     <div class="ftr__bot">
-      <p>&copy; ${ph('Year')} MORA Industries. All rights reserved. Registered office ${ph('Registered address')}.</p>
-      <div class="ftr__legal"><a href="#/legal">Privacy</a><a href="#/legal">Cookies</a><a href="#/legal">Terms</a><a href="#/contact">${ph('Email')}</a></div>
+      <p>&copy; ${ph('Year')} MORA Industries. All rights reserved.</p>
+      <div class="ftr__legal"><a href="#/legal">Privacy</a><a href="#/legal">Cookies</a><a href="#/legal">Terms</a><a href="mailto:contact@mora-industries.cloud">contact@mora-industries.cloud</a></div>
     </div>
   </div>`;
 }
@@ -1379,9 +1379,7 @@ function contactCard(){
   return `<aside class="ccard">
     <span class="ey ey--pale">Get in touch</span>
     <dl class="ccard__list">
-      <div><dt>Email</dt><dd>${ph('Email address')}</dd></div>
-      <div><dt>Phone</dt><dd>${ph('Phone number')}</dd></div>
-      <div><dt>Location</dt><dd>${ph('Location')}</dd></div>
+      <div><dt>Email</dt><dd>contact@mora-industries.cloud</dd></div>
     </dl>
     <div class="social" role="list">
       ${SOCIAL.map(s=>`<a class="social__a" role="listitem" href="#/contact" aria-label="${s[0]}">
@@ -2461,10 +2459,7 @@ function pageContact(){
       <h2 class="h2--tight">Send us the question.</h2>
       <p class="lede" style="margin:1.2rem 0 2rem">There is no obligation and no automatic acceptance. We will tell you plainly if we are not the right partner for what you need.</p>
       <dl class="ccard__list ccard__list--light">
-        <div><dt>Email</dt><dd>${ph('Email address')}</dd></div>
-        <div><dt>Phone</dt><dd>${ph('Phone number')}</dd></div>
-        <div><dt>Location</dt><dd>${ph('Location')}</dd></div>
-        <div><dt>Registered office</dt><dd>${ph('Registered address')}</dd></div>
+        <div><dt>Email</dt><dd>contact@mora-industries.cloud</dd></div>
       </dl>
       <div class="social social--light" role="list">
         ${SOCIAL.map(x=>`<a class="social__a" role="listitem" href="#/contact" aria-label="${x[0]}">

@@ -148,8 +148,8 @@ function renderFooter(){
       </div>
     </div>
     <div class="ftr__bot">
-      <p>&copy; ${ph('Year')} MORA Industries. All rights reserved. Registered office ${ph('Registered address')}.</p>
-      <div class="ftr__legal"><a href="#/legal">Privacy</a><a href="#/legal">Cookies</a><a href="#/legal">Terms</a><a href="#/contact">${ph('Email')}</a></div>
+      <p>&copy; ${ph('Year')} MORA Industries. All rights reserved.</p>
+      <div class="ftr__legal"><a href="#/legal">Privacy</a><a href="#/legal">Cookies</a><a href="#/legal">Terms</a><a href="mailto:contact@mora-industries.cloud">contact@mora-industries.cloud</a></div>
     </div>
   </div>`;
 }

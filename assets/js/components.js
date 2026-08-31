@@ -152,9 +152,7 @@ function contactCard(){
   return `<aside class="ccard">
     <span class="ey ey--pale">Get in touch</span>
     <dl class="ccard__list">
-      <div><dt>Email</dt><dd>${ph('Email address')}</dd></div>
-      <div><dt>Phone</dt><dd>${ph('Phone number')}</dd></div>
-      <div><dt>Location</dt><dd>${ph('Location')}</dd></div>
+      <div><dt>Email</dt><dd>contact@mora-industries.cloud</dd></div>
     </dl>
     <div class="social" role="list">
       ${SOCIAL.map(s=>`<a class="social__a" role="listitem" href="#/contact" aria-label="${s[0]}">
