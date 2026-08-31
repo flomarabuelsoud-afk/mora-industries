@@ -46,7 +46,7 @@ mora-industries/
 │   ├── css/
 │   │   ├── fonts.css           @font-face declarations
 │   │   └── styles.css          Design tokens + all component styles
-│   ├── fonts/                  9 woff2 files (latin subset)
+│   ├── fonts/                  13 woff2 files (latin + arabic subsets)
 │   ├── img/
 │   │   ├── mora-logo.svg           Vector wordmark, inherits currentColor
 │   │   ├── mora-logo-navy.svg      #083A56
@@ -60,6 +60,18 @@ mora-industries/
 │       ├── prism3d.js         3D hero prism: geometry, render, pointer
 │       ├── router.js           Routing, meta, interaction wiring, init
 │       └── pages/              One file per page group
+├── questionnaire/              Client questionnaire CQ-FEP-01 (standalone)
+│   ├── index.html              Page shell, header, actions
+│   ├── questionnaire.js        Bilingual content model + form logic
+│   └── questionnaire.css       Styles, RTL/LTR, print layout
+├── server/                     Questionnaire intake service (Node, VPS)
+│   ├── server.js               Express + Nodemailer + ExcelJS
+│   ├── build-form-map.js       Regenerates form-map.js from the page
+│   ├── form-map.js             GENERATED — do not edit
+│   ├── .env.example            SMTP, recipient, limits
+│   ├── mora-questionnaire.service
+│   ├── nginx.conf.snippet
+│   └── README.md               Deployment on the VPS
 └── dist/
     └── mora-industries-single-file.html
 ```
@@ -200,6 +212,44 @@ of it is disabled under `prefers-reduced-motion`.
 
 ---
 
+## Client questionnaire
+
+`/questionnaire/` is a standalone bilingual form built from the source
+workbook *Client Questionnaire — Factory Establishment Project (Egypt)*,
+document ref **CQ-FEP-01**. It is not part of the SPA: it is a plain page
+with its own CSS and JS, sharing the site's fonts, palette and logo.
+
+**One page, two languages.** Every string carries an `ar` and an `en`, and
+the ع/EN switch re-labels the page and flips `dir` in place — values already
+typed are untouched. Arabic uses IBM Plex Sans Arabic (SIL OFL, self-hosted
+like the rest) and drops letter-spacing, which would otherwise break the
+cursive joining.
+
+**What it does beyond the spreadsheet**
+
+| Behaviour | Why |
+|---|---|
+| Answers autosave to `localStorage` as they type | The form is long; clients fill it over several sittings |
+| Five questions appear only when relevant (B.2, G.1b, H.2, I.4b, J.3b) | The sheet asked "if yes…" in a cell that was always visible |
+| A.1, E.3–E.6 are bound to Section 5 rows M1, M2, 1, 2, 4 | A figure is typed once and appears in both places |
+| EGP equivalents, totals, self-funding and variance calculate live | These were formulas in the workbook |
+| Progress counts answered questions against visible ones | The sheet's "Form Completion" cell |
+| Print stylesheet produces a signable PDF | Section 7 needs wet signatures |
+| Save / restore a JSON copy | Continue on another device, or hand the file to a colleague |
+
+**Submission.** The page POSTs one JSON body to `CONFIG.ENDPOINT` (top of
+`questionnaire.js`, default `/api/questionnaire`). The service in `server/`
+receives it, archives it, and emails it to `Business@omar-abuelsoud.com`
+with an Excel and a JSON attachment, then sends the client a confirmation.
+See `server/README.md` for VPS deployment. If the request fails, the answers
+stay in the browser and the page offers an email fallback.
+
+**Keeping the two in step.** `server/form-map.js` is generated from
+`questionnaire.js`, so the email and workbook layout can never drift from the
+questions. Re-run `node build-form-map.js` after changing the form.
+
+---
+
 ## Before publication
 
 Every unresolved value is wrapped in `ph()` and renders with a gold
@@ -216,6 +266,7 @@ in the source. Search the rendered site for the gold marks, or grep for
 - [ ] `[Reviewer name and role]` — article sidebar
 - [ ] `[domain]` — canonical, Open Graph and JSON-LD in `index.html`
 - [ ] `assets/img/og-image.png` — not yet created
+- [ ] Questionnaire endpoint — `CONFIG.ENDPOINT` in `questionnaire/questionnaire.js` if the API is not same-origin
 - [ ] Legal page bodies — `/legal` is a routing placeholder listing the ten documents spec §13 requires
 - [ ] Partner logos, case studies and credentials — reserved slots on `/partners`, deliberately empty
 

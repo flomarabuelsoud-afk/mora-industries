@@ -1,0 +1,34 @@
+# ------------------------------------------------------------
+# Drop this inside the existing server { } block for the site.
+# The questionnaire page and the service then share one origin,
+# so no CORS configuration is needed at all.
+# ------------------------------------------------------------
+
+    # Static site, questionnaire included
+    root /var/www/mora-industries;
+    index index.html;
+
+    # /questionnaire/ is a plain directory with its own index.html
+    location /questionnaire/ {
+        try_files $uri $uri/ /questionnaire/index.html;
+    }
+
+    # Self-hosted fonts: immutable, so cache them hard
+    location /assets/fonts/ {
+        add_header Cache-Control "public, max-age=31536000, immutable";
+    }
+
+    # The intake service
+    location /api/questionnaire {
+        proxy_pass         http://127.0.0.1:4010;
+        proxy_http_version 1.1;
+        proxy_set_header   Host              $host;
+        proxy_set_header   X-Real-IP         $remote_addr;
+        proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+
+        # A questionnaire body is small; cap it well below the
+        # service's own 512kb JSON limit.
+        client_max_body_size 1m;
+        proxy_read_timeout   30s;
+    }

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>استبيان العميل – مشروع إنشاء مصنع · MORA Industries</title>
+<meta name="description" content="استبيان العميل لمشروع إنشاء مصنع في جمهورية مصر العربية — جمع البيانات اللازمة لدراسة الجدوى وتحليل السوق والاستثمار.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#04202F">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+
+<link rel="preload" href="../assets/fonts/ibm-plex-sans-arabic-arabic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="questionnaire.css">
+</head>
+<body>
+
+<a class="skip" href="#form-body">تخطي إلى النموذج / Skip to the form</a>
+
+<header class="qhdr">
+  <div class="qhdr__in">
+    <a class="qlogo" href="../" aria-label="MORA Industries">
+      <img src="../assets/img/mora-logo-navy.svg" alt="MORA Industries" width="118" height="47">
+    </a>
+
+    <div class="qhdr__mid">
+      <div class="prog" id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+           aria-label="Form completion">
+        <div class="prog__bar" id="bar"></div>
+      </div>
+      <div class="prog__meta">
+        <span class="pct" id="pctNum">0%</span>
+        <span class="pcount" id="pctCount"></span>
+        <span class="savestate" id="saveState" data-ar="" data-en=""></span>
+      </div>
+    </div>
+
+    <button class="langbtn" id="langBtn" type="button">EN</button>
+  </div>
+  <div class="spectrum" aria-hidden="true"></div>
+</header>
+
+<div class="qwrap">
+
+  <nav class="tocbox" aria-labelledby="toc-h">
+    <h2 class="toch" id="toc-h" data-ar="المحتويات" data-en="Contents">المحتويات</h2>
+    <ol class="toc" id="toc"></ol>
+    <p class="tocref" dir="ltr">CQ-FEP-01</p>
+  </nav>
+
+  <main class="qmain">
+    <div class="qintro">
+      <span class="ey" data-ar="مورا إندستريز · أبحاث فرص السوق والتطوير"
+            data-en="MORA Industries · Market Opportunities Research &amp; Advancement">مورا إندستريز · أبحاث فرص السوق والتطوير</span>
+      <h1 data-ar="استبيان العميل – مشروع إنشاء مصنع في جمهورية مصر العربية"
+          data-en="Client Questionnaire – Factory Establishment Project (Egypt)">استبيان العميل – مشروع إنشاء مصنع في جمهورية مصر العربية</h1>
+      <p class="qsub" data-ar="المتطلبات الأولية وجمع بيانات العميل · جميع القيم المالية بالدولار الأمريكي · يُحتسب المكافئ بالجنيه وفق سعر الصرف المُدخل"
+         data-en="Prerequisites &amp; client data collection · All financial values in USD · EGP equivalent calculated at the stated exchange rate">المتطلبات الأولية وجمع بيانات العميل · جميع القيم المالية بالدولار الأمريكي · يُحتسب المكافئ بالجنيه وفق سعر الصرف المُدخل</p>
+      <p class="conf" data-ar="سري — البيانات المُدخلة تُستخدم حصريًا لأغراض دراسة الجدوى وتحليل السوق والاستثمار."
+         data-en="Confidential — the information entered is used solely for feasibility, market and investment analysis.">سري — البيانات المُدخلة تُستخدم حصريًا لأغراض دراسة الجدوى وتحليل السوق والاستثمار.</p>
+    </div>
+
+    <form id="qform" novalidate autocomplete="on">
+      <div id="form-body"></div>
+
+      <!-- Left empty by people, filled by bots. Checked server-side. -->
+      <div class="hp" aria-hidden="true">
+        <label for="website">Website</label>
+        <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="result" id="result" hidden tabindex="-1"></div>
+
+      <div class="actions">
+        <button class="btn btn--pri" id="submitBtn" type="button"
+                data-ar="إرسال الاستبيان" data-en="Submit questionnaire">إرسال الاستبيان</button>
+        <button class="btn btn--sec" id="printBtn" type="button"
+                data-ar="طباعة / PDF" data-en="Print / PDF">طباعة / PDF</button>
+        <button class="btn btn--ghost" id="saveBtn" type="button"
+                data-ar="حفظ نسخة" data-en="Save a copy">حفظ نسخة</button>
+        <label class="btn btn--ghost" for="loadInput"
+               data-ar="استعادة نسخة" data-en="Restore a copy">استعادة نسخة</label>
+        <input id="loadInput" type="file" accept="application/json,.json" hidden>
+        <button class="btn btn--ghost btn--danger" id="clearBtn" type="button"
+                data-ar="مسح الكل" data-en="Clear all">مسح الكل</button>
+      </div>
+    </form>
+
+    <footer class="qftr">
+      <p dir="ltr">MORA Industries · Document ref CQ-FEP-01 · Confidential</p>
+      <p data-ar="تُحفظ إجاباتكم في هذا المتصفح فقط حتى تقوموا بالإرسال."
+         data-en="Your answers stay in this browser only until you submit.">تُحفظ إجاباتكم في هذا المتصفح فقط حتى تقوموا بالإرسال.</p>
+    </footer>
+  </main>
+</div>
+
+<script src="questionnaire.js"></script>
+</body>
+</html>

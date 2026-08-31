@@ -1,0 +1,32 @@
+# /etc/systemd/system/mora-questionnaire.service
+#
+#   sudo cp mora-questionnaire.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now mora-questionnaire
+#   sudo journalctl -u mora-questionnaire -f
+
+[Unit]
+Description=MORA Industries questionnaire intake service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=mora
+Group=mora
+WorkingDirectory=/opt/mora-questionnaire
+EnvironmentFile=/opt/mora-questionnaire/.env
+ExecStart=/usr/bin/node server.js
+Restart=on-failure
+RestartSec=5
+
+# The service only ever needs to write its archive directory.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/mora-questionnaire
+StateDirectory=mora-questionnaire
+
+[Install]
+WantedBy=multi-user.target
